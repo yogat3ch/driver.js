@@ -1,11 +1,11 @@
-import { AllowedButtons, destroyPopover, Popover } from "./popover";
-import { destroyOverlay } from "./overlay";
-import { destroyEvents, initEvents, requireRefresh } from "./events";
 import { Config, configure, DriverHook, getConfig } from "./config";
-import { destroyHighlight, highlight } from "./highlight";
-import { destroyEmitter, listen } from "./emitter";
-import { getState, resetState, setState } from "./state";
 import "./driver.css";
+import { destroyEmitter, listen } from "./emitter";
+import { destroyEvents, initEvents, requireRefresh } from "./events";
+import { destroyHighlight, highlight } from "./highlight";
+import { destroyOverlay } from "./overlay";
+import { AllowedButtons, destroyPopover, Popover } from "./popover";
+import { getState, resetState, setState } from "./state";
 
 export type DriveStep = {
   element?: string | Element;
@@ -157,6 +157,7 @@ export function driver(options: Config = {}) {
     const hasPreviousStep = steps[stepIndex - 1];
 
     const doneBtnText = currentStep.popover?.doneBtnText || getConfig("doneBtnText") || "Done";
+    // Comment
     const allowsClosing = getConfig("allowClose");
     const showProgress =
       typeof currentStep.popover?.showProgress !== "undefined"
